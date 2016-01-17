@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="background-style">
+    <div class="text-center">
+      <h1 class="text-info">Категории отправлений</h1>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Категория</th>
+          <th>Описание</th>
+          <th>Макс.вес</th>
+          <th>Мин.вес</th>
+          <% if signed_in? %>
+            <th class='text-center'></th>
+            <th class='text-center'></th>
+          <% end %>          
+        </tr>
+      </thead>
+      <tbody>  
+          <% @categories.each do |category| %>
+          <tr>
+            <td>
+              <p><%= category.name %></p>
+            </td>
+            <td>
+              <p><%= category.description %></p>
+            </td>
+            <td>
+              <p> <%= category.max_weight%> </p>
+            </td>
+            <td>
+              <p> <%= category.min_weight%> </p>
+            </td>
+            <% if signed_in? %>
+              <td class="text-center">
+                <%= link_to edit_category_path(category) do %>
+                  <span class="fa fa-pencil-square-o"></span>
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to category_path(category),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } do %>
+                <span class="fa fa-times"></span>
+                <% end %>
+              </td>
+            <% end %>            
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+    </div>
+    <div class="text-center">
+      <nav>
+        <div class="btn-group">
+          <%= link_to 'Назад', deliveries_path, class: 'btn btn-primary', role: 'button', method: :get %>
+          <%= link_to 'Новая категория', new_category_path, class: 'btn btn-success', role: 'button' %>
+        </div>
+      </nav>
+    </div>
+ </div>
+</div>

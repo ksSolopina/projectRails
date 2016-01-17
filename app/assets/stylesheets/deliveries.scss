@@ -1,0 +1,29 @@
+.panel-title a{
+	text-decoration: none;
+}
+.panel-body{
+  min-height: 350px;
+}
+.list-group-item .fa{
+	visibility: hidden;
+	color: #428bca;
+}
+.list-group-item:hover .fa{
+	visibility: visible;
+}
+.list-group-item:last-child .fa{
+	visibility: visible;
+	color: inherit;
+}
+.check_link{
+	display: none;
+}
+.edit_link{
+    display: inline-block;
+}
+input[type="checkbox"]{
+	position: absolute;
+	left: 110px;
+	// margin: 0px 10px 0px;
+	
+}

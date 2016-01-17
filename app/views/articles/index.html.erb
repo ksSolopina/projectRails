@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="background-style">
+    <div class="text-center">
+      <h1 class="text-info">Listing articles</h1>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Text</th>
+          <th class='text-center'>Show</th>
+          <th class='text-center'>Edit</th>
+          <th class='text-center'>Destroy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @articles.each do |article| %>
+          <tr>
+            <td>
+              <p class="text text-title">
+                <%= article.title %>
+              </p>
+            </td>
+            <td>
+              <p class="text">
+                <%= article.text %>
+              </p>
+            </td>
+            <td class="text-center">
+              <%= link_to article_path(article) do %>
+                <span class="fa fa-eye"></span>
+              <% end %>
+            </td>
+            <td class="text-center">
+              <%= link_to edit_article_path(article) do %>
+                <span class="fa fa-pencil-square-o"></span>
+              <% end %>
+            </td>
+            <td class="text-center">
+              <%= link_to article_path(article),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } do %>
+                <span class="fa fa-times"></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <nav>
+        <div class="btn-group">
+          <%= link_to 'Back', deliveries_path, class: 'btn btn-primary', role: 'button' %>
+          <%= link_to 'New article', new_article_path, class: 'btn btn-success', role: 'button' %>
+        </div>
+      </nav>
+    </div>
+ </div>
+</div>

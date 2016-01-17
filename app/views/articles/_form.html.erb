@@ -1,0 +1,24 @@
+<%= form_for @article, class: 'form-horizontal' do |f| %>
+  <%= render 'common/errors', resource: @article %>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%=f.label :title, class: 'control-label' %>
+      <%= f.text_field :title, class: 'form-control', type: 'text' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= f.label :text, class: 'control-label' %>
+      <%= f.text_area :text, class: 'form-control', rows: '10' %>
+    </div>
+  </div>
+  <div class="form-btn text-center">
+  	<nav>
+    		 <div class="btn-group">
+    			<%= link_to 'Back', articles_path, class: 'btn btn-primary', role: 'button'%>
+      		<%= f.submit class: 'btn btn-success', role: 'button' %>
+    		</div>
+    </nav>
+  </div>
+<% end %>
+
